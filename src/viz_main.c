@@ -106,6 +106,8 @@ void call_eviz(trie_t** tlist) {
   print_viz(return_array, return_index);
 }
 
+
+
 void call_wviz(trie_t** tlist) {
   trie_t* t = tlist[0];
   char* path = calloc(100,1);
@@ -165,6 +167,6 @@ int main(){
   call_only_words_prefix(tlist);
   printf("\nn_completions:\n");
   call_n_completions(tlist);
-  return 0; 
+  return 0;
 }
 
