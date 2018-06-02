@@ -2,6 +2,9 @@ language: c
 
 compiler: gcc
     
+before-install: 
+  - git submodule update --init --recursive
+
 install: true
 
 stage: 
