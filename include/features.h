@@ -7,6 +7,14 @@
  * Returns -1 if something goes wrong for internal reasons */
 int exec(char* arg, char* sups[]);
 
+/* Takes an input of supplementary arguments
+ * Interprets the first argument to represent the key of a trie
+ * Uses the second argument to determine which visualization to call
+ * Uses the third optionally as a prefix
+ * Uses the fourth optionally as a number of completions
+ * Returns 1, 0, or -1 as described above */
+int tprint(char** sups);
+
 /* Takes an input of supplementary arguments, uses only the first
  * Prints out an exhaustive visualization
  * Returns 1, 0, or -1 as described above */

@@ -1,6 +1,7 @@
 .PHONY: all, clean
 CC = gcc
-CFLAGS = -Wall -g -Wextra -std=c99 -I ./lib/api/lib/redis-tries/include -I ./include
+
+CFLAGS = -Wall -g -Wextra -std=c99 -D_GNU_SOURCE -I ./lib/api/lib/redis-tries/include -I ./include
 SRC = src/features.c src/main.c src/viz_functions.c ./lib/api/lib/redis-tries/src/trie.c src/testables.c
 # IMPL = viz_draft.c
 OBJ = shell
