@@ -3,7 +3,7 @@
 	url = https://github.com/cmsc22000-project-2018/api.git
 [submodule "lib/api/lib/redis-tries/RedisModulesSDK"]
 	path = lib/api/lib/redis-tries/RedisModulesSDK
-	url = https://github.com/RedisLabs/RedisModulesSDK/tree/3e4daab6dcbc881d8c17406235d156de55be4fc7
+	url = https://github.com/RedisLabs/RedisModulesSDK.git
 [submodule "lib/api/lib/redis-tries/hiredis"]
 	path = lib/api/lib/redis-tries/hiredis
-	url = https://github.com/redis/hiredis/tree/967027c881c8cf7c94d6f0223d079b9466c16cc0
+	url = https://github.com/redis/hiredis.git
