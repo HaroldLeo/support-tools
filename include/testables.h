@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "trie.h"
 
 #ifndef INCLUDE_TESTABLES_H
