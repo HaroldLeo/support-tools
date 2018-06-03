@@ -1,5 +1,8 @@
 #include "trie.h"
 
+#ifndef INCLUDE_FEATURES_H
+#define INCLUDE_FEATURES_H
+
 /* When given the function and its arguments, excecutes the relevant function
  * Returns -2 if the input is "quit"
  * Returns 1 if the input is not "quit" but is valid and successfully excecuted
@@ -61,3 +64,4 @@ const int functions = {
 const int num_features = 6;
 */
 
+#endif
