@@ -1,7 +1,6 @@
-
 .PHONY: all, clean
 CC = gcc
-LIB = redisApi
+LDLIBS = -lredisApi
 CFLAGS = -Wall -g -Wextra -std=c99 -D_GNU_SOURCE
 LDFLAGS = -Wl,-rpath,lib/api/
 LIB = 
@@ -11,7 +10,7 @@ OBJ = shell
 
 all: #implementation
 	make -C lib/api
-	$(CC) -Llib/api/ $(LDFLAGS) $(CFLAGS) $(SRC) -o $(OBJ) -lreadline -lredisApi
+	$(CC) -Llib/api/ $(LDFLAGS) $(CFLAGS) $(SRC) -o $(OBJ) -lreadline $(LDLIBS)
 # implementation:
 #	$(CC) $(CLFLAGS) -c $(IMPL) -o implementation
 viz:
