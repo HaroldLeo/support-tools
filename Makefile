@@ -8,7 +8,7 @@ SRC = src/features.c src/main.c src/etrie.c src/viz_functions.c src/testables.c
 OBJ = shell
 
 all: #implementation
-	make -C api
+	make -C lib/api
 	$(CC) $(LDFLAGS) $(CFLAGS) $(SRC) -o $(OBJ) -lreadline $(LDLIBS)
 # implementation:
 #	$(CC) $(CLFLAGS) -c $(IMPL) -o implementation
