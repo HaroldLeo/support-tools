@@ -1,6 +1,6 @@
 .PHONY: all, clean
 CC = gcc
-LDLIBs = -lreadline -lredisApi
+LDLIBs = -lredisApi
 CFLAGS = -Wall -g -Wextra -std=c99 -D_GNU_SOURCE
 LDFLAGS = -L./lib/api -Wl,-rpath,./lib/api/
 SRC = src/features.c src/main.c src/etrie.c src/viz_functions.c src/testables.c
@@ -8,7 +8,7 @@ SRC = src/features.c src/main.c src/etrie.c src/viz_functions.c src/testables.c
 OBJ = shell
 
 all: #implementation
-	$(CC) $(LDFLAGS) $(CFLAGS) $(SRC) -o $(OBJ) $(LDLIBS)
+	$(CC) $(LDFLAGS) $(CFLAGS) $(SRC) -o $(OBJ) -lreadline $(LDLIBS)
 # implementation:
 #	$(CC) $(CLFLAGS) -c $(IMPL) -o implementation
 viz:
