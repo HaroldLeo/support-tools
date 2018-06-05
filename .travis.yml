@@ -17,5 +17,6 @@ jobs:
   include:
     - stage: build
       script: make all
+      script: ./shell
     - stage: test
       script: echo test
