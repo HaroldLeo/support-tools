@@ -10,9 +10,11 @@ before-install:
   - cd hiredis
   - make
   - sudo make install
+  - make -C lib/api
   - sudo ldconfig
   - cd ..
   - sudo redis-server&
+  
 install: true
 
 stage: 
