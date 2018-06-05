@@ -13,10 +13,6 @@ before_install:
     - cd ..
     - sudo redis-server&
 
-stage: 
-  - build
-  - test
-
 jobs:
   include:
     - stage: build
