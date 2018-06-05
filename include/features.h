@@ -1,7 +1,5 @@
-#include "trie.h"
-
-#ifndef INCLUDE_FEATURES_H
-#define INCLUDE_FEATURES_H
+#include "../lib/api/include/trie.h"
+#include "etrie.h"
 
 /* When given the function and its arguments, excecutes the relevant function
  * Returns -2 if the input is "quit"
@@ -18,6 +16,17 @@ int exec(char* arg, char* sups[]);
  * Returns 1, 0, or -1 as described above */
 int tprint(char** sups);
 
+/* Takes an input of supplementary arguments
+ * Interprets the first argument to represent the key of a trie
+ * Uses the second argument to determine which word to add
+ * Returns 1, 0, or -1 as described above */
+int tinsert(char** sups);
+
+/* Takes an input of supplementary arguments
+ * Interprets the first argument to represent the key of a trie
+ * Returns 1, 0, or -1 as described above */
+int tnew(char** sups);
+
 /* Returns -2, does nothing else*/
 int quit(char** sups);
 
@@ -25,18 +34,18 @@ int quit(char** sups);
 int help(char** sups);
 
 
-/* Helper function for all visualizations 
- * Takes an input of a string that should contain only a number 
+/* Helper function for all visualizations
+ * Takes an input of a string that should contain only a number
  * Converts the string to a number, accesses the trie at that index in the trie.h file
  * Returns a pointer to it */
-trie_t* get_trie(char* index_str);
+etrie_t* get_etrie(char* index_str);
 
 /* Helper function to print with a standardized indentation
  * Takes an input of a string and prints with 2 spaces as an indent
  */
 void std_indent(char* string);
 
-/* Helper function to print with a given indentation 
+/* Helper function to print with a given indentation
  * Takes a string and a number n, prints the string with each line indented n spaces
  */
 void print_indented_n(char* string, int indent);
@@ -51,7 +60,6 @@ const char* inputs = {
   "wviz",
   "sviz",
 };
- 
 const int functions = {
   (*help)(char**),
   (*quit)(char**),
@@ -60,8 +68,5 @@ const int functions = {
   (*wviz)(char**),
   (*sviz)(char**),
 };
-
 const int num_features = 6;
 */
-
-#endif

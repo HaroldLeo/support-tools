@@ -1,14 +1,15 @@
 .PHONY: all, clean
 CC = gcc
-CFLAGS = -Wall -g -Wextra -std=c99 -I lib/api/lib/redis-tries/include -I include/ -D_GNU_SOURCE
-SRC = src/features.c src/main.c src/viz_functions.c lib/api/lib/redis-tries/src/trie.c src/testables.c
+LIB = redisApi
+CFLAGS = -Wall -g -Wextra -std=c99 -D_GNU_SOURCE
+LDFLAGS = -Wl,-rpath,lib/api/
+LIB =
+SRC = src/features.c src/main.c src/etrie.c src/viz_functions.c src/testables.c
 # IMPL = viz_draft.c
 OBJ = shell
-VIZ_SRC = src/viz_main.c src/viz_functions.c lib/api/lib/redis-tries/src/trie.c src/testables.c
-VIZ_OBJ = viz
 
 all: #implementation
-	$(CC) $(CFLAGS) $(SRC) -o $(OBJ) -lreadline 
+	$(CC) -Llib/api/ $(LDFLAGS) $(CFLAGS) $(SRC) -o $(OBJ) -lreadline -lredisApi
 # implementation:
 #	$(CC) $(CLFLAGS) -c $(IMPL) -o implementation
 viz:
@@ -16,4 +17,3 @@ viz:
 
 clean:
 	rm $(OBJ)
-

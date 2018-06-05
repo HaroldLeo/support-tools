@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "viz_functions.h"
-#include "testables.h"
-#include "trie.h"
+#include "../include/viz_functions.h"
+#include "../include/testables.h"
+#include "../include/trie.h"
 
-void call_all_nodes(trie_t** tlist, int index) {
+void call_all_nodes(trie_t** tlist, int index)
+{
   trie_t* t = tlist[index];
   char* path = calloc(1000,1);
   int level = 0;
@@ -18,7 +19,8 @@ void call_all_nodes(trie_t** tlist, int index) {
   print_viz(return_array, return_index);
 }
 
-void call_all_nodes_prefix(trie_t** tlist, int index, char* pre) {
+void call_all_nodes_prefix(trie_t** tlist, int index, char* pre)
+{
   trie_t* t = tlist[index];
   char* path = calloc(1000,1);
   int level = 0;
@@ -30,7 +32,8 @@ void call_all_nodes_prefix(trie_t** tlist, int index, char* pre) {
   print_viz(return_array, return_index);
 }
 
-void call_only_leaves(trie_t** tlist) {
+void call_only_leaves(trie_t** tlist)
+{
   trie_t* t = tlist[2];
   char* path = calloc(1000,1);
   int level = 0;
@@ -42,7 +45,8 @@ void call_only_leaves(trie_t** tlist) {
   print_viz(return_array, return_index);
 }
 
-void call_only_leaves_prefix(trie_t** tlist) {
+void call_only_leaves_prefix(trie_t** tlist)
+{
   trie_t* t = tlist[2];
   char* path = calloc(1000,1);
   int level = 0;
@@ -54,7 +58,8 @@ void call_only_leaves_prefix(trie_t** tlist) {
   print_viz(return_array, return_index);
 }
 
-void call_only_words(trie_t** tlist) {
+void call_only_words(trie_t** tlist)
+{
   trie_t* t = tlist[2];
   char* path = calloc(1000,1);
   int level = 0;
@@ -66,7 +71,8 @@ void call_only_words(trie_t** tlist) {
   print_viz(return_array, return_index);
 }
 
-void call_only_words_prefix(trie_t** tlist) {
+void call_only_words_prefix(trie_t** tlist)
+{
   trie_t* t = tlist[2];
   char* path = calloc(1000,1);
   int level = 0;
@@ -79,7 +85,8 @@ void call_only_words_prefix(trie_t** tlist) {
 }
 
 
-void call_n_completions(trie_t** tlist) {
+void call_n_completions(trie_t** tlist)
+{
   trie_t* t = tlist[2];
   char* path = calloc(1000,1);
   int level = 0;
@@ -104,9 +111,6 @@ void call_eviz(trie_t** tlist) {
   eviz(t, path, level, return_array, return_index);
   print_viz(return_array, return_index);
 }
-
-
-
 void call_wviz(trie_t** tlist) {
   trie_t* t = tlist[0];
   char* path = calloc(100,1);
@@ -117,7 +121,6 @@ void call_wviz(trie_t** tlist) {
   wviz(t, path, level, return_array, return_index);
   print_viz(return_array, return_index);
 }
-
 void call_lviz(trie_t** tlist) {
   trie_t* t = tlist[0];
   char* path = calloc(100,1);
@@ -128,7 +131,6 @@ void call_lviz(trie_t** tlist) {
   lviz(t, path, level, return_array, return_index);
   print_viz(return_array, return_index);
 }
-
 void call_sviz(trie_t** tlist) {
   trie_t* t = tlist[0];
   char* path = calloc(100,1);
@@ -142,7 +144,8 @@ void call_sviz(trie_t** tlist) {
 }
 */
 
-int main(){
+int main()
+{
   trie_t** tlist = return_trie_list();
   printf("\nall_nodes 0:\n");
   call_all_nodes(tlist,0);
@@ -168,4 +171,3 @@ int main(){
   call_n_completions(tlist);
   return 0;
 }
-

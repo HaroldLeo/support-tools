@@ -7,22 +7,25 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "viz_functions.h"
+#include "../include/viz_functions.h"
 
-int print_all_nodes(trie_t* t, char* prefix, char path[], int level, char* return_arr[], unsigned int* return_index)
+int print_all_nodes(etrie_t* t, char* prefix, char path[], int level, char* return_arr[], unsigned int* return_index)
 {
     /*
      * Make sure that all inputs are valid
      */
-    if (t == NULL) {
+    if (t == NULL)
+    {
         fprintf(stderr, "print_all_nodes: t is NULL");
         return 0;
     }
-    if (return_arr == NULL) {
+    if (return_arr == NULL)
+    {
         fprintf(stderr, "print_all_nodes: return_arr is NULL");
         return 0;
     }
-    if (return_index == NULL) {
+    if (return_index == NULL)
+    {
         fprintf(stderr, "print_all_nodes: return_index is NULL");
         return 0;
     }
@@ -33,11 +36,13 @@ int print_all_nodes(trie_t* t, char* prefix, char path[], int level, char* retur
     int run_with_prefix = (prefix == NULL) ? 0 : 1;
 
     /*
-     * if you are running it with a prefix, get to the appropriate subtrie
+     * if you are running it with a prefix, get to the appropriate subetrie
      */
-    if (run_with_prefix) {
-        //make sure prefix is in the trie
-        if (trie_search(t, prefix) == 0) {
+    if (run_with_prefix)
+    {
+        //make sure prefix is in the etrie
+        if (etrie_search(t, prefix) == 0)
+        {
             return 0;
         }
 
@@ -45,14 +50,17 @@ int print_all_nodes(trie_t* t, char* prefix, char path[], int level, char* retur
          * Gets to the node where the prefix ends
          */
         size_t prefix_size = strlen(prefix);
-        for (size_t j = 0; j < prefix_size; ++j) {
+        for (size_t j = 0; j < prefix_size; ++j)
+        {
             t = t->children[(int)prefix[j]];
         }
     }
 
-    for (int i = 0; i < 255; i++) {
+    for (int i = 0; i < 255; i++)
+    {
 
-        if (t->children[i]) {
+        if (t->children[i])
+        {
             path[level] = t->children[i]->current;
             memset(path+level+1, 0, 1000-level-1);
             return_arr[*return_index] = strdup(path);
@@ -67,13 +75,15 @@ int print_all_nodes(trie_t* t, char* prefix, char path[], int level, char* retur
 
     }
 
-    if (run_with_prefix) {
+    if (run_with_prefix)
+    {
         /*
          * Add the prefix string to the front of each
          * string in the return_arr since it is left off
          * in print_all_nodes
          */
-        for (unsigned int i = 0; i < *return_index; ++i) {
+        for (unsigned int i = 0; i < *return_index; ++i)
+        {
             char* full_child = calloc(1,100);
             strcpy(full_child, prefix);
             strcat(full_child, return_arr[i]);
@@ -85,20 +95,23 @@ int print_all_nodes(trie_t* t, char* prefix, char path[], int level, char* retur
     return 1;
 }
 
-int print_only_leaves(trie_t* t, char* prefix, char path[], int level, char** return_arr, unsigned int* return_index)
+int print_only_leaves(etrie_t* t, char* prefix, char path[], int level, char** return_arr, unsigned int* return_index)
 {
     /*
      * Make sure that all inputs are valid
      */
-    if (t == NULL) {
+    if (t == NULL)
+    {
         fprintf(stderr, "print_only_leaves: t is NULL");
         return 0;
     }
-    if (return_arr == NULL) {
+    if (return_arr == NULL)
+    {
         fprintf(stderr, "print_only_leaves: return_arr is NULL");
         return 0;
     }
-    if (return_index == NULL) {
+    if (return_index == NULL)
+    {
         fprintf(stderr, "print_only_leaves: return_index is NULL");
         return 0;
     }
@@ -109,11 +122,13 @@ int print_only_leaves(trie_t* t, char* prefix, char path[], int level, char** re
     int run_with_prefix = (prefix == NULL) ? 0 : 1;
 
     /*
-     * if you are running it with a prefix, get to the appropriate subtrie
+     * if you are running it with a prefix, get to the appropriate subetrie
      */
-    if (run_with_prefix) {
-        //make sure prefix is in the trie
-        if (trie_search(t, prefix) == 0) {
+    if (run_with_prefix)
+    {
+        //make sure prefix is in the etrie
+        if (etrie_search(t, prefix) == 0)
+        {
             return 0;
         }
 
@@ -121,7 +136,8 @@ int print_only_leaves(trie_t* t, char* prefix, char path[], int level, char** re
          * Gets to the node where the prefix ends
          */
         size_t prefix_size = strlen(prefix);
-        for (size_t j = 0; j < prefix_size; ++j) {
+        for (size_t j = 0; j < prefix_size; ++j)
+        {
             t = t->children[(int)prefix[j]];
         }
     }
@@ -150,13 +166,15 @@ int print_only_leaves(trie_t* t, char* prefix, char path[], int level, char** re
         }
     }
 
-    if (run_with_prefix) {
+    if (run_with_prefix)
+    {
         /*
          * Add the prefix string to the front of each
          * string in the return_arr since it is left off
          * in print_only_leaves
          */
-        for (unsigned int i = 0; i < *return_index; ++i) {
+        for (unsigned int i = 0; i < *return_index; ++i)
+        {
             char* full_child = calloc(1,100);
             strcpy(full_child, prefix);
             strcat(full_child, return_arr[i]);
@@ -168,20 +186,23 @@ int print_only_leaves(trie_t* t, char* prefix, char path[], int level, char** re
     return 1;
 }
 
-int print_only_words(trie_t* t, char* prefix, char path[], int level, char** return_arr, unsigned int* return_index)
+int print_only_words(etrie_t* t, char* prefix, char path[], int level, char** return_arr, unsigned int* return_index)
 {
     /*
      * Make sure that all inputs are valid
      */
-    if (t == NULL) {
+    if (t == NULL)
+    {
         fprintf(stderr, "print_only_words: t is NULL");
         return 0;
     }
-    if (return_arr == NULL) {
+    if (return_arr == NULL)
+    {
         fprintf(stderr, "print_only_words: return_arr is NULL");
         return 0;
     }
-    if (return_index == NULL) {
+    if (return_index == NULL)
+    {
         fprintf(stderr, "print_only_words: return_index is NULL");
         return 0;
     }
@@ -192,11 +213,13 @@ int print_only_words(trie_t* t, char* prefix, char path[], int level, char** ret
     int run_with_prefix = (prefix == NULL) ? 0 : 1;
 
     /*
-     * if you are running it with a prefix, get to the appropriate subtrie
+     * if you are running it with a prefix, get to the appropriate subetrie
      */
-    if (run_with_prefix) {
-        //make sure prefix is in the trie
-        if (trie_search(t, prefix) == 0) {
+    if (run_with_prefix)
+    {
+        //make sure prefix is in the etrie
+        if (etrie_search(t, prefix) == 0)
+        {
             return 0;
         }
 
@@ -204,7 +227,8 @@ int print_only_words(trie_t* t, char* prefix, char path[], int level, char** ret
          * Gets to the node where the prefix ends
          */
         size_t prefix_size = strlen(prefix);
-        for (size_t j = 0; j < prefix_size; ++j) {
+        for (size_t j = 0; j < prefix_size; ++j)
+        {
             t = t->children[(int)prefix[j]];
         }
     }
@@ -233,13 +257,15 @@ int print_only_words(trie_t* t, char* prefix, char path[], int level, char** ret
         }
     }
 
-    if (run_with_prefix) {
+    if (run_with_prefix)
+    {
         /*
          * Add the prefix string to the front of each
          * string in the return_arr since it is left off
          * in print_all_nodes
          */
-        for (unsigned int i = 0; i < *return_index; ++i) {
+        for (unsigned int i = 0; i < *return_index; ++i)
+        {
             char* full_child = calloc(1,100);
             strcpy(full_child, prefix);
             strcat(full_child, return_arr[i]);
@@ -251,11 +277,12 @@ int print_only_words(trie_t* t, char* prefix, char path[], int level, char** ret
     return 1;
 }
 
-int print_n_completions(trie_t* t, char* prefix, char path[], int level, char** return_arr, unsigned int n)
+int print_n_completions(etrie_t* t, char* prefix, char path[], int level, char** return_arr, unsigned int n)
 {
     unsigned int* return_index = malloc(sizeof(unsigned int));
     print_only_words(t, prefix, path, level, return_arr, return_index);
-    if (*return_index > n) {
+    if (*return_index > n)
+    {
         char* new_arr[n];
         for (unsigned int i = 0; i < n; ++i)
         {
@@ -295,10 +322,10 @@ void print_viz(char** to_print, unsigned int* num_items)
     }
 }
 
-int is_node(trie_t* t, char* str)
+int is_node(etrie_t* t, char* str)
 {
-    trie_t* search=t;
-    // Create a new trie to look through without losing our original pointer
+    etrie_t* search=t;
+    // Create a new etrie to look through without losing our original pointer
 
     for (size_t i = 0; i < strlen(str); i++)
         // For all chars in the string
@@ -310,14 +337,14 @@ int is_node(trie_t* t, char* str)
         // If no such node exists return false
 
         search=search->children[index];
-        // Continue searching through the trie
+        // Continue searching through the etrie
     }
 
     return (search!=NULL);
-    // If you go all the way through the trie, return true. Else, false.
+    // If you go all the way through the etrie, return true. Else, false.
 }
 
-bool has_children_prefix(trie_t *t, char *prefix)
+bool has_children_prefix(etrie_t *t, char *prefix)
 {
 
     if (t == NULL)
@@ -332,12 +359,12 @@ bool has_children_prefix(trie_t *t, char *prefix)
         return true;
     }
 
-    trie_t* trie = t;
+    etrie_t* etrie = t;
 
     for (size_t i = 0; i < input_size; ++i)
     {
-        trie = trie->children[(int)prefix[i]];
-        if(trie == NULL)
+        etrie = etrie->children[(int)prefix[i]];
+        if(etrie == NULL)
         {
             return false;
         }
@@ -348,9 +375,9 @@ bool has_children_prefix(trie_t *t, char *prefix)
 }
 
 /*
- * returns 1 if a trie has children, 0 otherwise
+ * returns 1 if a etrie has children, 0 otherwise
  */
-int has_children(trie_t* t)
+int has_children(etrie_t* t)
 {
     for (int i = 0; i < 256; i++)
     {
@@ -359,4 +386,3 @@ int has_children(trie_t* t)
     }
     return 0;
 }
-

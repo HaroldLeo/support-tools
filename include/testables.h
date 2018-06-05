@@ -1,12 +1,8 @@
-#include "trie.h"
+#include <stdlib.h>
+#include "etrie.h"
 
-#ifndef INCLUDE_TESTABLES_H
-#define INCLUDE_TESTABLES_H
+etrie_t** return_etrie_list();
 
-trie_t** return_trie_list();
-
-trie_t* first_trie();
-trie_t* second_trie();
-trie_t* third_trie();
-
-#endif
+etrie_t* first_etrie();
+etrie_t* second_etrie();
+etrie_t* third_etrie();
